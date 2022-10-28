@@ -7,9 +7,14 @@
 /* Print pi as an array of n digits in base 10000 */
 void print(unsigned short *pi, int n) {
   int i;
-  printf("%d.", pi[1]);
+  //printf("%d", pi[0]);
+  //printf("%d.\n", pi[1]);
   for (i=2; i<n-1; ++i)
-    printf("%04d", pi[i]);
+    if (pi[i] <= 2048){
+      printf("\n - %04d:%d - \n", pi[i],i);
+    } else {
+    printf("%04d\n", pi[i]);
+    }
   printf("\n");
 }
 
