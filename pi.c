@@ -13,7 +13,7 @@ void print(unsigned short *pi, int n) {
     if (pi[i] <= 2048){
       printf("\n - %04d:%d - \n", pi[i],i);
     } else {
-    printf("%04d\n", pi[i]);
+    //printf("%04d\n", pi[i]);
     }
   printf("\n");
 }
