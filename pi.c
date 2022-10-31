@@ -4,6 +4,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+void swap(unsigned short* xp, unsigned short* yp);
+void bubbleSort(unsigned short arr[], int n);
+void printArray(unsigned short arr[], int size);
+
 /* Print pi as an array of n digits in base 10000 */
 void print(unsigned short *pi, int n) {
   int i;
@@ -13,9 +17,12 @@ void print(unsigned short *pi, int n) {
     if (pi[i] <= 2048){
       printf("%04d:%d\n", pi[i],i);
     } else {
-    //printf("%04d\n", pi[i]);
+    printf("%04d\n", pi[i]);
     }
   printf("\n");
+  bubbleSort(pi, n);
+  printf("Sorted array: \n");
+  printArray(pi, n);
 }
 
 /* Compute pi to B bits precision by the Spigot algorithm given by
@@ -103,12 +110,9 @@ int main(int argc, char** argv) {
 
   print(pi, n);
 
-  //unsigned short *arr = (unsigned short*) malloc(n * sizeof(unsigned short));
-  //arr = pi;
-  //int nn = sizeof(&pi) / sizeof(pi[0]);
-  bubbleSort(pi, n);
-  printf("Sorted array: \n");
-  printArray(pi, n);
+  // bubbleSort(pi, n);
+  // printf("Sorted array: \n");
+  // printArray(pi, n);
 
   return 0;
 }
