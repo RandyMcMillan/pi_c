@@ -1,4 +1,5 @@
 default:
+	$(MAKE) clean
 	@gcc pi.c -o pi
 test: default tests
 tests:

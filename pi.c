@@ -15,6 +15,7 @@ void print(unsigned short *pi, int n) {
   //printf("%d.\n", pi[1]);
   for (i=2; i<n-1; ++i)
     if (pi[i] <= 2048){
+      bubbleSort(pi, n);
       printf("%04d:%d\n", pi[i],i);
     } else {
     printf("%04d\n", pi[i]);
@@ -110,9 +111,9 @@ int main(int argc, char** argv) {
 
   print(pi, n);
 
-  // bubbleSort(pi, n);
-  // printf("Sorted array: \n");
-  // printArray(pi, n);
+  bubbleSort(pi, n);
+  printf("Sorted array: \n");
+  printArray(pi, n);
 
   return 0;
 }
