@@ -11,7 +11,7 @@ void print(unsigned short *pi, int n) {
   //printf("%d.\n", pi[1]);
   for (i=2; i<n-1; ++i)
     if (pi[i] <= 2048){
-      printf("\n - %04d:%d - \n", pi[i],i);
+      printf("%04d:%d\n", pi[i],i);
     } else {
     //printf("%04d\n", pi[i]);
     }
