@@ -111,9 +111,9 @@ int main(int argc, char** argv) {
 
   print(pi, n);
 
-  bubbleSort(pi, n);
-  printf("Sorted array: \n");
-  printArray(pi, n);
+  // bubbleSort(pi, n);
+  // printf("Sorted array: \n");
+  // printArray(pi, n);
 
   return 0;
 }
