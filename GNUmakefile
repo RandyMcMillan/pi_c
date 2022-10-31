@@ -8,6 +8,7 @@ test: default
 	@`pwd`/./pi 1000  > `pwd`/tests/1000.log
 	@`pwd`/./pi 10000 > `pwd`/tests/10000.log
 	@`pwd`/./pi 20000 > `pwd`/tests/20000.log
+	@git diff
 clean:
 	@rm -f pi
 	@rm -f *.out
