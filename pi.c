@@ -41,6 +41,34 @@ http://web.comlab.ox.ac.uk/oucl/work/jeremy.gibbons/publications/spigot.pdf
 
 */
 
+void swap(unsigned short* xp, unsigned short* yp)
+{
+	unsigned short temp = *xp;
+	*xp = *yp;
+	*yp = temp;
+}
+
+// A function to implement bubble sort
+void bubbleSort(unsigned short arr[], int n)
+{
+	int i, j;
+	for (i = 0; i < n - 1; i++)
+
+		// Last i elements are already in place
+		for (j = 0; j < n - i - 1; j++)
+			if (arr[j] > arr[j + 1])
+				swap(&arr[j], &arr[j + 1]);
+}
+
+/* Function to print an array */
+void printArray(unsigned short arr[], int size)
+{
+	int i;
+	for (i = 0; i < size; i++)
+		printf("%d ", arr[i]);
+	printf("\n");
+}
+
 int main(int argc, char** argv) {
   int n = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
   unsigned short *pi = (unsigned short*) malloc(n * sizeof(unsigned short));
@@ -74,6 +102,14 @@ int main(int argc, char** argv) {
   }
 
   print(pi, n);
+
+  unsigned short *arr = (unsigned short*) malloc(n * sizeof(unsigned short));
+  arr = pi;
+  int nn = sizeof(&arr) / sizeof(arr[0]);
+  bubbleSort(arr, nn);
+  printf("Sorted array: \n");
+  printArray(arr, nn);
+
   return 0;
 }
 
