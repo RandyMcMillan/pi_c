@@ -103,12 +103,12 @@ int main(int argc, char** argv) {
 
   print(pi, n);
 
-  unsigned short *arr = (unsigned short*) malloc(n * sizeof(unsigned short));
-  arr = pi;
-  int nn = sizeof(&arr) / sizeof(arr[0]);
-  bubbleSort(arr, nn);
+  //unsigned short *arr = (unsigned short*) malloc(n * sizeof(unsigned short));
+  //arr = pi;
+  //int nn = sizeof(&pi) / sizeof(pi[0]);
+  bubbleSort(pi, n);
   printf("Sorted array: \n");
-  printArray(arr, nn);
+  printArray(pi, n);
 
   return 0;
 }
