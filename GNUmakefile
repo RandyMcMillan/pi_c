@@ -34,6 +34,10 @@ tests: pi
 	@`pwd`/./pi 1001   > `pwd`/logs/1001.log
 	@`pwd`/./pi 10001  > `pwd`/logs/10001.log
 	@git diff
+test:
+	@mkdir -p tests
+	@`pwd`/./pi 10000 > `pwd`/tests/10000.log
+	@`pwd`/./pi 20000 > `pwd`/tests/20000.log
 clean:
 	@rm -f pi
 	@rm -f *.out
