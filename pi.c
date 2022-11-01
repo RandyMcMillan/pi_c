@@ -74,7 +74,7 @@ void bubbleSort(unsigned short arr[], int n)
 void printArray(unsigned short arr[], int size)
 {
 	int i;
-	for (i = 0; i < size; i++)
+	for (i = 2; i < size-1; i++)
 		printf("%04d ", arr[i]);
 	printf("\n");
 }
