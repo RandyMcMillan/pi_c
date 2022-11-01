@@ -16,7 +16,7 @@ void print(unsigned short *pi, unsigned short *list, int n) {
   for (i=2; i<n-1; ++i)
     if (pi[i] <= 2048){
 	list[i] = pi[i];
-      printf("%04d:%d\n", pi[i],i);
+      printf("%04d:%04d\n", pi[i],i);
     } else {
       //printf("%04d-%d\n", pi[i],i);
       printf("%04d\n", pi[i]);
