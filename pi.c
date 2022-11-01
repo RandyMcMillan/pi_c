@@ -9,21 +9,23 @@ void bubbleSort(unsigned short arr[], int n);
 void printArray(unsigned short arr[], int size);
 
 /* Print pi as an array of n digits in base 10000 */
-void print(unsigned short *pi, int n) {
+void print(unsigned short *pi, unsigned short *list, int n) {
   int i;
   //printf("%d", pi[0]);
   //printf("%d.\n", pi[1]);
   for (i=2; i<n-1; ++i)
     if (pi[i] <= 2048){
-      bubbleSort(pi, n);
+	list[i] = pi[i];
       printf("%04d:%d\n", pi[i],i);
     } else {
-      //printf("%04d\n", pi[i]);
+      //printf("%04d-%d\n", pi[i],i);
+      printf("%04d\n", pi[i]);
     }
+  //bubbleSort(pi, sizeof(&pi));
   printf("\n");
   // bubbleSort(pi, n);
   // printf("Sorted array: \n");
-  // printArray(pi, n);
+  printArray(list, n);
 }
 
 /* Compute pi to B bits precision by the Spigot algorithm given by
@@ -79,7 +81,8 @@ void printArray(unsigned short arr[], int size)
 
 int main(int argc, char** argv) {
   int n = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
-  unsigned short *pi = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *pi   = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *list = (unsigned short*) malloc(n * sizeof(unsigned short));
   div_t d;
   int i, j, t;
 
@@ -109,7 +112,7 @@ int main(int argc, char** argv) {
     pi[1] += 2;
   }
 
-  print(pi, n);
+  print(pi, list, n);
 
   // bubbleSort(pi, n);
   // printf("Sorted array: \n");
