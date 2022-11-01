@@ -75,7 +75,7 @@ void printArray(unsigned short arr[], int size)
 {
 	int i;
 	for (i = 0; i < size; i++)
-		printf("%d ", arr[i]);
+		printf("%04d ", arr[i]);
 	printf("\n");
 }
 
