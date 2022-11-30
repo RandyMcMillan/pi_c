@@ -4,13 +4,34 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct {
+    int  chunk;
+    int index;
+} chunk_index;
+
+void swap(unsigned short* xp, unsigned short* yp);
+void bubbleSort(unsigned short arr[], int n);
+void printArray(unsigned short arr[], int size);
+
 /* Print pi as an array of n digits in base 10000 */
-void print(unsigned short *pi, int n) {
+void print(unsigned short *pi, unsigned short *list, int n) {
   int i;
-  printf("%d.", pi[1]);
+  printf("%d", pi[0]);
+  printf("%d.\n", pi[1]);
   for (i=2; i<n-1; ++i)
-    printf("%04d", pi[i]);
+    if (pi[i] <= 2048){
+        list[i] = pi[i];
+        printf("%04d ", pi[i]);
+    }else{
+        printf("%04d ", pi[i]);
+    }
+  //bubbleSort(pi, sizeof(&pi));
   printf("\n");
+  // bubbleSort(pi, n);
+  // printf("Sorted array: \n");
+
+  // printArray(list, n);
+  // printf("\n");
 }
 
 /* Compute pi to B bits precision by the Spigot algorithm given by
@@ -36,9 +57,40 @@ http://web.comlab.ox.ac.uk/oucl/work/jeremy.gibbons/publications/spigot.pdf
 
 */
 
+void swap(unsigned short* xp, unsigned short* yp)
+{
+	unsigned short temp = *xp;
+	*xp = *yp;
+	*yp = temp;
+}
+
+// A function to implement bubble sort
+void bubbleSort(unsigned short arr[], int n)
+{
+	int i, j;
+	for (i = 0; i < n - 1; i++)
+
+		// Last i elements are already in place
+		for (j = 0; j < n - i - 1; j++)
+			if (arr[j] > arr[j + 1])
+				swap(&arr[j], &arr[j + 1]);
+}
+
+/* Function to print an array */
+void printArray(unsigned short arr[], int size)
+{
+	int i;
+	for (i = 2; i < size-1; i++)
+		printf("%04d:     ", arr[i]);
+		printf("%04d:%04d", arr[i], i);
+	printf("\n");
+}
+
 int main(int argc, char** argv) {
   int n = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
-  unsigned short *pi = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *pi   = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *list = (unsigned short*) malloc(n * sizeof(unsigned short));
+  // chunk_index *list = (chunk_index*) malloc(n * sizeof(chunk_index));
   div_t d;
   int i, j, t;
 
@@ -68,7 +120,16 @@ int main(int argc, char** argv) {
     pi[1] += 2;
   }
 
-  print(pi, n);
+  print(pi, list, n);
+
+  // bubbleSort(pi, n);
+  // printf("Sorted array: \n");
+  // printArray(pi, n);
+
+  printArray(list, n);
+
+  printf("\n");
+
   return 0;
 }
 
