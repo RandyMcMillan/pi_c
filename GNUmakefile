@@ -10,7 +10,7 @@ tests:
 	@`pwd`/./pi 1000   > `pwd`/logs/1000.log
 	@`pwd`/./pi 10000  > `pwd`/logs/10000.log
 	@`pwd`/./pi 20000  > `pwd`/logs/20000.log
-	@git diff
+# 	@git diff
 time:
 	@mkdir -p logs
 	@time `pwd`/./pi 100000 > `pwd`/logs/100000.log
