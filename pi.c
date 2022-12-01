@@ -40,7 +40,7 @@ void print(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n
 	printf("%01lu.\n", pi[1]);
 	for (i=2; i<n-1; ++i)
 		if (pi[i] <= 2048){
-			printf("%04lu\n ", pi[i]);
+			printf("%04lu\n", pi[i]);
 			list[i] = pi[i];
 			//printf("%04lu \n", list[i]);
 			gt_list[i] = 0;
