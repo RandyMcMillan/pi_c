@@ -5,26 +5,26 @@
 #include <string.h>
 
 typedef struct {
-	unsigned short chunk;
-	unsigned short index;
+	unsigned long chunk;
+	unsigned long index;
 } chunk_index;
 
-void swap(unsigned short* xp, unsigned short* yp);
-void bubbleSort(unsigned short arr[], unsigned short arr2[], int n);
-void printArray(unsigned short arr[], int size);
-void populate_chunk_index(unsigned short arr[], chunk_index ci[], int size);
+void swap(unsigned long* xp, unsigned long* yp);
+void bubbleSort(unsigned long arr[], unsigned long arr2[], int n);
+void printArray(unsigned long arr[], int size);
+void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
 
 /* Print pi as an array of n digits in base 10000 */
-void print(unsigned short *pi, unsigned short *list, unsigned short *gt_list, int n) {
+void print(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n) {
 	
 	int i;
 	//printf("print\n");
 	printf("\n");
-	printf("%d", pi[0]);
-	printf("%03d.\n", pi[1]);
+	printf("%lu", pi[0]);
+	printf("%03lu.\n", pi[1]);
 	for (i=2; i<n-1; ++i)
 		if (pi[i] <= 2048){
-			printf("%04d ", pi[i]);
+			printf("%04lu ", pi[i]);
 			list[i] = pi[i];
 			gt_list[i] = 0;
 		}else{
@@ -57,15 +57,15 @@ http://web.comlab.ox.ac.uk/oucl/work/jeremy.gibbons/publications/spigot.pdf
 
 */
 
-void swap(unsigned short* xp, unsigned short* yp)
+void swap(unsigned long* xp, unsigned long* yp)
 {
-	unsigned short temp = *xp;
+	unsigned long temp = *xp;
 	*xp = *yp;
 	*yp = temp;
 }
 
 // A function to implement bubble sort
-void bubbleSort(unsigned short arr[], unsigned short arr2[], int n)
+void bubbleSort(unsigned long arr[], unsigned long arr2[], int n)
 {
 	int i, j;
 	for (i = 0; i < n - 1; i++)
@@ -78,20 +78,20 @@ void bubbleSort(unsigned short arr[], unsigned short arr2[], int n)
 }
 
 /* Function to print an array */
-void printArray(unsigned short arr[], int size)
+void printArray(unsigned long arr[], int size)
 {
 	int i;
 	//printf("printArray\n");
-	printf("%d", arr[0]);
-	printf("%d.\n", arr[1]);
+	printf("%lu", arr[0]);
+	printf("%lu.\n", arr[1]);
 	for (i = 2; i < size-1; i++)
-		//printf("%04d:     ", arr[i]);
+		//printf("%04lu:     ", arr[i]);
 		if (arr[i] <= 2048){
-			printf("%04d:%04d ", arr[i], i);
+			printf("%04lu:%04d ", arr[i], i);
 		}
 	printf("\n");
 }
-void populate_chunk_index(unsigned short arr[], chunk_index ci[], int size)
+void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size)
 {
 	int i;
 	//printf("populate_chunk_index\n");
@@ -99,15 +99,15 @@ void populate_chunk_index(unsigned short arr[], chunk_index ci[], int size)
 	ci[0].index = 0;
 	ci[1].chunk = arr[1];
 	ci[1].index = 1;
-	printf("%d", ci[0].chunk);
-	printf("%d.\n", ci[1].chunk);
+	printf("%lu", ci[0].chunk);
+	printf("%lu.\n", ci[1].chunk);
 	for (i = 2; i < size-1; i++){
 		ci[i].chunk = arr[i];
 		ci[i].index = i;
-		//printf("i=%04d\n",i);
-		//printf("arr[i]=%04d\n", arr[i]);
-		//printf("%04d:%04d:%04d\n", ci[i].chunk, ci[i].index, size);
-		printf("%04d:%04d ", ci[i].chunk, ci[i].index);
+		//printf("i=%04lu\n",i);
+		//printf("arr[i]=%04lu\n", arr[i]);
+		//printf("%04lu:%04lu:%04lu\n", ci[i].chunk, ci[i].index, size);
+		printf("%04lu:%04lu ", ci[i].chunk, ci[i].index);
 	};
 
 }
@@ -115,9 +115,9 @@ void populate_chunk_index(unsigned short arr[], chunk_index ci[], int size)
 int main(int argc, char** argv) {
 
   int n = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
-  unsigned short *pi       = (unsigned short*) malloc(n * sizeof(unsigned short));
-  unsigned short *list     = (unsigned short*) malloc(n * sizeof(unsigned short));
-  unsigned short *gt_list  = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned long *pi       = (unsigned long*) malloc(n * sizeof(unsigned long));
+  unsigned long *list     = (unsigned long*) malloc(n * sizeof(unsigned long));
+  unsigned long *gt_list  = (unsigned long*) malloc(n * sizeof(unsigned long));
 
   chunk_index *chunk_list  = (chunk_index*)    malloc(n * sizeof(chunk_index));
 
@@ -125,9 +125,9 @@ int main(int argc, char** argv) {
   int i, j, t1, t2, t3;
 
   /* pi = 4  */
-  memset(pi,      0, n*sizeof(unsigned short));
-  memset(list,    0, n*sizeof(unsigned short));
-  memset(gt_list, 0, n*sizeof(unsigned short));
+  memset(pi,      0, n*sizeof(unsigned long));
+  memset(list,    0, n*sizeof(unsigned long));
+  memset(gt_list, 0, n*sizeof(unsigned long));
   pi[1]=4;
   list[1]=4;
   gt_list[1]=4;
