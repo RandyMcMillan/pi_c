@@ -37,12 +37,14 @@ void print(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n
 	//printf("print\n");
 	printf("\n");
 	printf("%lu", pi[0]);
-	printf("%01lu.\n", pi[1]);
+	printf("%03lu.\n", pi[1]);
 	for (i=2; i<n-1; ++i)
 		if (pi[i] <= 2048){
 			printf("%04lu ", pi[i]);
 			list[i] = pi[i];
+			//printf("%04lu \n", list[i]);
 			gt_list[i] = 0;
+			//printf("%04lu \n", gt_list[i]);
 		}else{
 			list[i] = 0;
 			gt_list[i] = pi[i];
@@ -183,13 +185,14 @@ int main(int argc, char** argv) {
   }
 
   //bubbleSort(pi, list, n);
-  // printf("Sorted array: \n");
+  //printf("Sorted array: \n");
 
   printArray(pi,   n);
   printArray(list, n);
   printArray(gt_list, n);
   populate_chunk_index(pi, chunk_list, n);
   print(pi, list, gt_list, n);
+  //print_pi(pi, list, gt_list, n);
 
   printf("\n");
 
