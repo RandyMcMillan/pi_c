@@ -6,7 +6,8 @@ tests: pi
 	@mkdir -p logs
 	@`pwd`/./pi 1      > `pwd`/logs/1.log
 	@`pwd`/./pi 5      > `pwd`/logs/5.log
-	@`pwd`/./pi 10     > `pwd`/logs/10.log
+	@`pwd`/./pi 9      > `pwd`/logs/9.log
+	@`pwd`/./pi 17     > `pwd`/logs/17.log
 	@`pwd`/./pi 100    > `pwd`/logs/100.log
 	@`pwd`/./pi 1000   > `pwd`/logs/1000.log
 	@`pwd`/./pi 10000  > `pwd`/logs/10000.log
