@@ -25,15 +25,15 @@ tests: pi
 	@`pwd`/./pi 73     > `pwd`/logs/73.log
 	@`pwd`/./pi 77     > `pwd`/logs/77.log
 	@`pwd`/./pi 81     > `pwd`/logs/81.log
-	@`pwd`/./pi 100    > `pwd`/logs/100.log
-	@`pwd`/./pi 1000   > `pwd`/logs/1000.log
-	@`pwd`/./pi 10000  > `pwd`/logs/10000.log
-	@`pwd`/./pi 20000  > `pwd`/logs/20000.log
+	@`pwd`/./pi 85     > `pwd`/logs/85.log
+	@`pwd`/./pi 89     > `pwd`/logs/89.log
+	@`pwd`/./pi 93     > `pwd`/logs/93.log
+	@`pwd`/./pi 97     > `pwd`/logs/97.log
+	@`pwd`/./pi 101    > `pwd`/logs/101.log
+	@`pwd`/./pi 1001   > `pwd`/logs/1001.log
+	@`pwd`/./pi 10001  > `pwd`/logs/10001.log
+	@`pwd`/./pi 20001  > `pwd`/logs/20001.log
 # 	@git diff
-time:
-	@mkdir -p logs
-	@time `pwd`/./pi 100000 > `pwd`/logs/100000.log
-	@git diff
 clean:
 	@rm -f pi
 	@rm -f *.out
