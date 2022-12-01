@@ -37,7 +37,7 @@ void print(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n
 	//printf("print\n");
 	printf("\n");
 	printf("%lu", pi[0]);
-	printf("%03lu.\n", pi[1]);
+	printf("%01lu.\n", pi[1]);
 	for (i=2; i<n-1; ++i)
 		if (pi[i] <= 2048){
 			printf("%04lu ", pi[i]);
