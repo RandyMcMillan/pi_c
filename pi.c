@@ -90,7 +90,8 @@ void populate_chunk_index(unsigned short arr[], chunk_index ci[], int size)
 		ci[i].index = i;
 		//printf("i=%04d\n",i);
 		//printf("arr[i]=%04d\n", arr[i]);
-		printf("%04d:%04d:%04d\n", ci[i].chunk, ci[i].index, size);
+		//printf("%04d:%04d:%04d\n", ci[i].chunk, ci[i].index, size);
+		printf("%04d:%04d\n", ci[i].chunk, ci[i].index);
 		};
 
 }
