@@ -7,6 +7,7 @@ tests: pi
 	@`pwd`/./pi 1      > `pwd`/logs/1.log
 	@`pwd`/./pi 5      > `pwd`/logs/5.log
 	@`pwd`/./pi 9      > `pwd`/logs/9.log
+	@`pwd`/./pi 13     > `pwd`/logs/13.log
 	@`pwd`/./pi 17     > `pwd`/logs/17.log
 	@`pwd`/./pi 21     > `pwd`/logs/21.log
 	@`pwd`/./pi 25     > `pwd`/logs/25.log
