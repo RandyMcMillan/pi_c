@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define BASE 10000
+
 typedef struct {
 	unsigned long chunk;
 	unsigned long index;
@@ -14,7 +16,7 @@ void bubbleSort(unsigned long arr[], unsigned long arr2[], int n);
 void printArray(unsigned long arr[], int size);
 void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
 
-/* Print pi as an array of n digits in base 10000 */
+/* Print pi as an array of n digits in base BASE */
 void print(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n) {
 	
 	int i;
@@ -41,7 +43,7 @@ Rabinowitz and Wagon, Am. Math. Monthly, March 1995, 195-203.
    for (i = B; i>0; --i)
      pi = 2 + pi * i / (2*i+1)
 
-pi is represented by a base 10000 array of digits with 2 digits before
+pi is represented by a base BASE array of digits with 2 digits before
 the decimal point (pi[0], pi[1]), and one extra digit (pi[n-1]) at
 the end to allow for roundoff error, which is not printed.  Note that a
 base 10 digit is equivalent to log(10)/log(2) = 3.322 bits.
@@ -143,18 +145,18 @@ int main(int argc, char** argv) {
       t1 += pi[j] * i;
       t2 += list[j] * i;
       t3 += gt_list[j] * i;
-      pi[j]      = t1 % 10000;
-      list[j]    = t2 % 10000;
-      gt_list[j] = t3 % 10000;
-      t1 /= 10000;
-      t2 /= 10000;
-      t3 /= 10000;
+      pi[j]      = t1 % BASE;
+      list[j]    = t2 % BASE;
+      gt_list[j] = t3 % BASE;
+      t1 /= BASE;
+      t2 /= BASE;
+      t3 /= BASE;
     }
 
     /* pi /= (2*i+1) */
     d.quot = d.rem = 0;
     for (j=0; j<n; ++j) {  /* pi /= 2*i+1; */
-      d = div(pi[j]+d.rem*10000, i+i+1);
+      d = div(pi[j]+d.rem*BASE, i+i+1);
       pi[j]      = d.quot;
       list[j]    = d.quot;
       gt_list[j] = d.quot;
