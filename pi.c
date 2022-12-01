@@ -10,20 +10,21 @@ typedef struct {
 } chunk_index;
 
 void swap(unsigned short* xp, unsigned short* yp);
-void bubbleSort(unsigned short arr[], int n);
+void bubbleSort(unsigned short arr[], unsigned short arr2[], int n);
 void printArray(unsigned short arr[], int size);
 
 /* Print pi as an array of n digits in base 10000 */
-void print(unsigned short *pi, unsigned short *list, int n) {
+void print(unsigned short *pi, unsigned short *list, unsigned short *gt_list, int n) {
   int i;
   printf("%d", pi[0]);
   printf("%d.\n", pi[1]);
   for (i=2; i<n-1; ++i)
     if (pi[i] <= 2048){
         list[i] = pi[i];
-        printf("%04d ", pi[i]);
+        gt_list[i] = 0;
     }else{
-        printf("%04d ", pi[i]);
+        list[i] = 0;
+        gt_list[i] = pi[i];
     }
   //bubbleSort(pi, sizeof(&pi));
   printf("\n");
@@ -65,7 +66,7 @@ void swap(unsigned short* xp, unsigned short* yp)
 }
 
 // A function to implement bubble sort
-void bubbleSort(unsigned short arr[], int n)
+void bubbleSort(unsigned short arr[], unsigned short arr2[], int n)
 {
 	int i, j;
 	for (i = 0; i < n - 1; i++)
@@ -73,7 +74,8 @@ void bubbleSort(unsigned short arr[], int n)
 		// Last i elements are already in place
 		for (j = 0; j < n - i - 1; j++)
 			if (arr[j] > arr[j + 1])
-				swap(&arr[j], &arr[j + 1]);
+				swap(&arr[j],  &arr[j + 1]);
+				swap(&arr2[j], &arr2[j + 1]);
 }
 
 /* Function to print an array */
@@ -81,52 +83,68 @@ void printArray(unsigned short arr[], int size)
 {
 	int i;
 	for (i = 2; i < size-1; i++)
-		printf("%04d:     ", arr[i]);
-		printf("%04d:%04d", arr[i], i);
+		//printf("%04d:     ", arr[i]);
+		printf("%04d:%04d ", arr[i], i);
 	printf("\n");
 }
 
 int main(int argc, char** argv) {
   int n = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
-  unsigned short *pi   = (unsigned short*) malloc(n * sizeof(unsigned short));
-  unsigned short *list = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *pi      = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *list    = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *gt_list = (unsigned short*) malloc(n * sizeof(unsigned short));
   // chunk_index *list = (chunk_index*) malloc(n * sizeof(chunk_index));
   div_t d;
-  int i, j, t;
+  int i, j, t1, t2, t3;
 
   /* pi = 4  */
-  memset(pi, 0, n*sizeof(unsigned short));
+  memset(pi,      0, n*sizeof(unsigned short));
+  memset(list,    0, n*sizeof(unsigned short));
+  memset(gt_list, 0, n*sizeof(unsigned short));
   pi[1]=4;
+  list[1]=4;
+  gt_list[1]=4;
 
   /* for i = B down to 1 */
   for (i=(int)(3.322*4*n); i>0; --i) {
 
     /* pi *= i; */
-    t = 0;
+    t1 = 0;
+    t2 = 0;
+    t3 = 0;
     for (j=n-1; j>=0; --j) {  /* pi *= i; */
-      t += pi[j] * i;
-      pi[j] = t % 10000;
-      t /= 10000;
+      t1 += pi[j] * i;
+      t2 += list[j] * i;
+      t3 += gt_list[j] * i;
+      pi[j]      = t1 % 10000;
+      list[j]    = t2 % 10000;
+      gt_list[j] = t3 % 10000;
+      t1 /= 10000;
+      t2 /= 10000;
+      t3 /= 10000;
     }
 
     /* pi /= (2*i+1) */
     d.quot = d.rem = 0;
     for (j=0; j<n; ++j) {  /* pi /= 2*i+1; */
       d = div(pi[j]+d.rem*10000, i+i+1);
-      pi[j] = d.quot;
+      pi[j]      = d.quot;
+      list[j]    = d.quot;
+      gt_list[j] = d.quot;
     }
 
     /* pi += 2 */
     pi[1] += 2;
+    list[1] += 2;
+    gt_list[1] += 2;
   }
 
-  print(pi, list, n);
-
-  // bubbleSort(pi, n);
+  //bubbleSort(pi, list, n);
   // printf("Sorted array: \n");
-  // printArray(pi, n);
 
+  printArray(pi,   n);
   printArray(list, n);
+  printArray(gt_list, n);
 
   printf("\n");
 
