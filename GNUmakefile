@@ -15,6 +15,7 @@ tests: pi
 	@`pwd`/./pi 37     > `pwd`/logs/37.log
 	@`pwd`/./pi 41     > `pwd`/logs/41.log
 	@`pwd`/./pi 45     > `pwd`/logs/45.log
+	@`pwd`/./pi 49     > `pwd`/logs/49.log
 	@`pwd`/./pi 100    > `pwd`/logs/100.log
 	@`pwd`/./pi 1000   > `pwd`/logs/1000.log
 	@`pwd`/./pi 10000  > `pwd`/logs/10000.log
