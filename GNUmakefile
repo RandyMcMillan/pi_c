@@ -5,6 +5,7 @@ test: default tests
 .PHONY:tests
 tests: pi
 	@mkdir -p logs
+	@`pwd`/./pi        > `pwd`/logs/pi.log
 	@`pwd`/./pi 1      > `pwd`/logs/1.log
 	@`pwd`/./pi 5      > `pwd`/logs/5.log
 	@`pwd`/./pi 9      > `pwd`/logs/9.log
