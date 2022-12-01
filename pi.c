@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BASE 10000
+#define BASE 1000
 
 typedef struct {
 	unsigned long chunk;
@@ -23,10 +23,10 @@ void print_pi(unsigned long *pi, unsigned long *list, unsigned long *gt_list, in
 	//printf("print\n");
 	printf("\n");
 	//printf("%lu", pi[0]);
-	printf("%1lu.", pi[1]);
+	printf("%1lu.\n", pi[1]);
 	for (i=2; i<n-1; ++i)
 		if (pi[i] <= 2048){
-			printf("%04lu", pi[i]);
+			printf("%04lu\n", pi[i]);
 		}else{}
 	printf("\n");
 }
@@ -40,7 +40,7 @@ void print(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n
 	printf("%01lu.\n", pi[1]);
 	for (i=2; i<n-1; ++i)
 		if (pi[i] <= 2048){
-			printf("%04lu ", pi[i]);
+			printf("%04lu\n ", pi[i]);
 			list[i] = pi[i];
 			//printf("%04lu \n", list[i]);
 			gt_list[i] = 0;
@@ -105,7 +105,7 @@ void printArray(unsigned long arr[], int size)
 	for (i = 2; i < size-1; i++)
 		//printf("%04lu:     ", arr[i]);
 		if (arr[i] <= 2048){
-			printf("%04lu:%04d ", arr[i], i);
+			printf("%04lu:%04d\n", arr[i], i);
 		}
 	printf("\n");
 }
@@ -125,7 +125,7 @@ void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size)
 		//printf("i=%04lu\n",i);
 		//printf("arr[i]=%04lu\n", arr[i]);
 		//printf("%04lu:%04lu:%04lu\n", ci[i].chunk, ci[i].index, size);
-		printf("%04lu:%04lu ", ci[i].chunk, ci[i].index);
+		printf("%04lu:%04lu\n", ci[i].chunk, ci[i].index);
 	};
 
 }
