@@ -16,18 +16,22 @@ void populate_chunk_index(unsigned short arr[], chunk_index ci[], int size);
 
 /* Print pi as an array of n digits in base 10000 */
 void print(unsigned short *pi, unsigned short *list, unsigned short *gt_list, int n) {
-  int i;
-  printf("%d", pi[0]);
-  printf("%d.\n", pi[1]);
-  for (i=2; i<n-1; ++i)
-    if (pi[i] <= 2048){
-        list[i] = pi[i];
-        gt_list[i] = 0;
-    }else{
-        list[i] = 0;
-        gt_list[i] = pi[i];
-    }
-  printf("\n");
+	
+	int i;
+	//printf("print\n");
+	printf("\n");
+	printf("%d", pi[0]);
+	printf("%03d.\n", pi[1]);
+	for (i=2; i<n-1; ++i)
+		if (pi[i] <= 2048){
+			printf("%04d ", pi[i]);
+			list[i] = pi[i];
+			gt_list[i] = 0;
+		}else{
+			list[i] = 0;
+			gt_list[i] = pi[i];
+		}
+	printf("\n");
 }
 
 /* Compute pi to B bits precision by the Spigot algorithm given by
@@ -77,22 +81,34 @@ void bubbleSort(unsigned short arr[], unsigned short arr2[], int n)
 void printArray(unsigned short arr[], int size)
 {
 	int i;
+	//printf("printArray\n");
+	printf("%d", arr[0]);
+	printf("%d.\n", arr[1]);
 	for (i = 2; i < size-1; i++)
 		//printf("%04d:     ", arr[i]);
-		printf("%04d:%04d ", arr[i], i);
+		if (arr[i] <= 2048){
+			printf("%04d:%04d ", arr[i], i);
+		}
 	printf("\n");
 }
 void populate_chunk_index(unsigned short arr[], chunk_index ci[], int size)
 {
 	int i;
+	//printf("populate_chunk_index\n");
+	ci[0].chunk = arr[0];
+	ci[0].index = 0;
+	ci[1].chunk = arr[1];
+	ci[1].index = 1;
+	printf("%d", ci[0].chunk);
+	printf("%d.\n", ci[1].chunk);
 	for (i = 2; i < size-1; i++){
 		ci[i].chunk = arr[i];
 		ci[i].index = i;
 		//printf("i=%04d\n",i);
 		//printf("arr[i]=%04d\n", arr[i]);
 		//printf("%04d:%04d:%04d\n", ci[i].chunk, ci[i].index, size);
-		printf("%04d:%04d\n", ci[i].chunk, ci[i].index);
-		};
+		printf("%04d:%04d ", ci[i].chunk, ci[i].index);
+	};
 
 }
 
@@ -154,9 +170,10 @@ int main(int argc, char** argv) {
   // printf("Sorted array: \n");
 
   printArray(pi,   n);
-  //printArray(list, n);
-  //printArray(gt_list, n);
+  printArray(list, n);
+  printArray(gt_list, n);
   populate_chunk_index(pi, chunk_list, n);
+  print(pi, list, gt_list, n);
 
   printf("\n");
 
