@@ -2,6 +2,7 @@ default:
 	$(MAKE) clean
 	@gcc pi.c -o pi
 test: default tests
+.PHONY:tests
 tests: pi
 	@mkdir -p logs
 	@`pwd`/./pi 1      > `pwd`/logs/1.log
@@ -32,7 +33,6 @@ tests: pi
 	@`pwd`/./pi 101    > `pwd`/logs/101.log
 	@`pwd`/./pi 1001   > `pwd`/logs/1001.log
 	@`pwd`/./pi 10001  > `pwd`/logs/10001.log
-	@`pwd`/./pi 20001  > `pwd`/logs/20001.log
 # 	@git diff
 clean:
 	@rm -f pi
