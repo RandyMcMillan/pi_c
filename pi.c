@@ -17,6 +17,20 @@ void printArray(unsigned long arr[], int size);
 void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
 
 /* Print pi as an array of n digits in base BASE */
+void print_pi(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n) {
+
+	int i;
+	//printf("print\n");
+	printf("\n");
+	//printf("%lu", pi[0]);
+	printf("%1lu.", pi[1]);
+	for (i=2; i<n-1; ++i)
+		if (pi[i] <= 2048){
+			printf("%04lu", pi[i]);
+		}else{}
+	printf("\n");
+}
+/* Print pi as an array of n digits in base BASE */
 void print(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n) {
 	
 	int i;
