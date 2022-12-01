@@ -5,13 +5,14 @@
 #include <string.h>
 
 typedef struct {
-    int  chunk;
-    int index;
+	unsigned short chunk;
+	unsigned short index;
 } chunk_index;
 
 void swap(unsigned short* xp, unsigned short* yp);
 void bubbleSort(unsigned short arr[], unsigned short arr2[], int n);
 void printArray(unsigned short arr[], int size);
+void populate_chuck_index(unsigned short arr[], chunk_index ci[], int size);
 
 /* Print pi as an array of n digits in base 10000 */
 void print(unsigned short *pi, unsigned short *list, unsigned short *gt_list, int n) {
@@ -26,13 +27,7 @@ void print(unsigned short *pi, unsigned short *list, unsigned short *gt_list, in
         list[i] = 0;
         gt_list[i] = pi[i];
     }
-  //bubbleSort(pi, sizeof(&pi));
   printf("\n");
-  // bubbleSort(pi, n);
-  // printf("Sorted array: \n");
-
-  // printArray(list, n);
-  // printf("\n");
 }
 
 /* Compute pi to B bits precision by the Spigot algorithm given by
@@ -87,13 +82,28 @@ void printArray(unsigned short arr[], int size)
 		printf("%04d:%04d ", arr[i], i);
 	printf("\n");
 }
+void populate_chuck_index(unsigned short arr[], chunk_index ci[], int size)
+{
+	int i;
+	for (i = 2; i < size-1; i++){
+		ci[i].chunk = arr[i];
+		ci[i].index = i;
+		//printf("i=%04d\n",i);
+		//printf("arr[i]=%04d\n", arr[i]);
+		printf("%04d:%04d:%04d\n", ci[i].chunk, ci[i].index, size);
+		};
+
+}
 
 int main(int argc, char** argv) {
+
   int n = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
-  unsigned short *pi      = (unsigned short*) malloc(n * sizeof(unsigned short));
-  unsigned short *list    = (unsigned short*) malloc(n * sizeof(unsigned short));
-  unsigned short *gt_list = (unsigned short*) malloc(n * sizeof(unsigned short));
-  // chunk_index *list = (chunk_index*) malloc(n * sizeof(chunk_index));
+  unsigned short *pi       = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *list     = (unsigned short*) malloc(n * sizeof(unsigned short));
+  unsigned short *gt_list  = (unsigned short*) malloc(n * sizeof(unsigned short));
+
+  chunk_index *chunk_list  = (chunk_index*)    malloc(n * sizeof(chunk_index));
+
   div_t d;
   int i, j, t1, t2, t3;
 
@@ -143,8 +153,9 @@ int main(int argc, char** argv) {
   // printf("Sorted array: \n");
 
   printArray(pi,   n);
-  printArray(list, n);
-  printArray(gt_list, n);
+  //printArray(list, n);
+  //printArray(gt_list, n);
+  populate_chuck_index(pi, chunk_list, n);
 
   printf("\n");
 
