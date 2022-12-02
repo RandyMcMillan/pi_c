@@ -3,13 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+//
+#include "constants.c"
+//
 #include "print.c"
 #include "print_pi.c"
 #include "print_array.c"
-#include "populate_chunk_index.c"
+//
 #include "bubble_sort.c"
-#include "constants.c"
-
+#include "populate_chunk_index.c"
+//
 #define BASE 1000
 
 //pi.h
