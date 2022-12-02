@@ -5,11 +5,12 @@
 #include <string.h>
 #include "print_pi.c"
 #include "populate_chunk_index.c"
+#include "bubble_sort.c"
 
 #define BASE 1000
 
 void swap(unsigned long* xp, unsigned long* yp);
-void bubbleSort(unsigned long arr[], unsigned long arr2[], int n);
+void bubble_sort(unsigned long arr[], unsigned long arr2[], int n);
 void printArray(unsigned long arr[], int size);
 void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
 
@@ -57,26 +58,6 @@ Jeremy Gibbons, University of Oxford, 2004,
 http://web.comlab.ox.ac.uk/oucl/work/jeremy.gibbons/publications/spigot.pdf
 
 */
-
-void swap(unsigned long* xp, unsigned long* yp)
-{
-	unsigned long temp = *xp;
-	*xp = *yp;
-	*yp = temp;
-}
-
-// A function to implement bubble sort
-void bubbleSort(unsigned long arr[], unsigned long arr2[], int n)
-{
-	int i, j;
-	for (i = 0; i < n - 1; i++)
-
-		// Last i elements are already in place
-		for (j = 0; j < n - i - 1; j++)
-			if (arr[j] > arr[j + 1])
-				swap(&arr[j],  &arr[j + 1]);
-				swap(&arr2[j], &arr2[j + 1]);
-}
 
 /* Function to print an array */
 void printArray(unsigned long arr[], int size)
