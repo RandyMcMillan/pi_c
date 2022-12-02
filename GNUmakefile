@@ -1,6 +1,13 @@
 default:
 	$(MAKE) clean
 	@gcc pi.c -o pi
+	@gcc type.c -o type
+.PHONY:pi
+pi:
+	@gcc pi.c -o pi
+.PHONY:type
+type:
+	@gcc type.c -o type
 test: default tests
 .PHONY:tests
 tests: pi
