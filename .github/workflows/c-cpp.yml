@@ -17,5 +17,7 @@ jobs:
       run: make
     - name: make tests
       run: make tests
+    - name: make tests-10000X
+      run: make tests-10000X
     - name: pi
       run: ./pi

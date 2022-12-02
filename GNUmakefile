@@ -44,10 +44,14 @@ tests: pi
 #	@git diff
 .PHONY:tests-100000
 tests-100000: pi
+	@`pwd`/./pi 100000  > `pwd`/logs/100000.log
 	@`pwd`/./pi 100000  > `pwd`/logs/10000X.log
 .PHONY:tests-100001
 tests-100001: pi
+	@`pwd`/./pi 100000  > `pwd`/logs/100001.log
 	@`pwd`/./pi 100001  > `pwd`/logs/10000X.log
+.PHONY:tests-10000X
+tests-10000X: tests-100000 tests-100001
 clean:
 	@rm -f pi
 	@rm -f *.out
