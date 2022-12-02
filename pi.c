@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "print.c"
 #include "print_pi.c"
 #include "print_array.c"
 #include "populate_chunk_index.c"
@@ -15,28 +16,6 @@ void swap(unsigned long* xp, unsigned long* yp);
 void bubble_sort(unsigned long arr[], unsigned long arr2[], int n);
 void print_array(unsigned long arr[], int size);
 void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
-
-/* Print pi as an array of n digits in base BASE */
-void print(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n) {
-	
-	int i;
-	//printf("print\n");
-	printf("\n");
-	printf("%lu", pi[0]);
-	printf("%01lu.\n", pi[1]);
-	for (i=2; i<n-1; ++i)
-		if (pi[i] <= 2048){
-			printf("%04lu\n", pi[i]);
-			list[i] = pi[i];
-			//printf("%04lu \n", list[i]);
-			gt_list[i] = 0;
-			//printf("%04lu \n", gt_list[i]);
-		}else{
-			list[i] = 0;
-			gt_list[i] = pi[i];
-		}
-	printf("\n");
-}
 
 int main(int argc, char** argv) {
 
@@ -92,15 +71,15 @@ int main(int argc, char** argv) {
     gt_list[1] += 2;
   }
 
-  //bubbleSort(pi, list, n);
+  //bubble_sort(pi, list, n);
   //printf("Sorted array: \n");
 
   print_array(pi,   n);
-  print_array(list, n);
-  print_array(gt_list, n);
-  populate_chunk_index(pi, chunk_list, n);
-  print(pi, list, gt_list, n);
+  //print_array(list, n);
+  //print_array(gt_list, n);
   //print_pi(pi, list, gt_list, n);
+  //populate_chunk_index(pi, chunk_list, n);
+  //print(pi, list, gt_list, n);
 
   printf("\n");
 

@@ -6,7 +6,7 @@
 void print_array(unsigned long arr[], int size)
 {
 	int i;
-	//printf("printArray\n");
+	printf("print_array\n");
 	printf("%lu", arr[0]);
 	printf("%lu.\n", arr[1]);
 	for (i = 2; i < size-1; i++)
