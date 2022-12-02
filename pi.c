@@ -81,14 +81,16 @@ int main(int argc, char** argv) {
   //printf("Sorted array: \n");
 
   print_array(pi,          n);
+  // print_array(list,        n);
+  // bubble_sort(pi, list,    n);
   print_array(list,        n);
   print_array(gt_list,     n);
   //
-  print_array2(pi,list,    n);
-  print_array2(pi,gt_list, n);
-  //print_pi(pi, list, gt_list, n);
-  //populate_chunk_index(pi, chunk_list, n);
-  //print(pi, list, gt_list, n);
+  // print_array2(pi,list,    n);
+  // print_array2(pi,gt_list, n);
+  // print_pi(pi, list, gt_list, n);
+  // populate_chunk_index(pi, chunk_list, n);
+  // print(pi, list, gt_list, n);
 
   //printf("\n");
 

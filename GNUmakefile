@@ -41,7 +41,7 @@ tests: pi
 	@`pwd`/./pi 101    > `pwd`/logs/101.log
 	@`pwd`/./pi 1001   > `pwd`/logs/1001.log
 	@`pwd`/./pi 10001  > `pwd`/logs/10001.log
-	@git diff
+#	@git diff
 clean:
 	@rm -f pi
 	@rm -f *.out
