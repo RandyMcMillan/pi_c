@@ -6,7 +6,7 @@
 void print_pi(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n) {
 
 	int i;
-	//printf("print\n");
+	printf("print\n");
 	printf("\n");
 	//printf("%lu", pi[0]);
 	printf("%1lu.\n", pi[1]);

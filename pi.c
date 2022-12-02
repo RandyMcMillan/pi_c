@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
   //populate_chunk_index(pi, chunk_list, n);
   //print(pi, list, gt_list, n);
 
-  printf("\n");
+  //printf("\n");
 
   return 0;
 }

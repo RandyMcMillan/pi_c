@@ -11,7 +11,7 @@ typedef struct {
 void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size)
 {
 	int i;
-	//printf("populate_chunk_index\n");
+	printf("populate_chunk_index\n");
 	ci[0].chunk = arr[0];
 	ci[0].index = 0;
 	ci[1].chunk = arr[1];
