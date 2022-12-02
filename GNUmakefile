@@ -51,7 +51,9 @@ tests-100001: pi
 	@`pwd`/./pi 100000  > `pwd`/logs/100001.log
 	@`pwd`/./pi 100001  > `pwd`/logs/10000X.log
 .PHONY:tests-10000X
-tests-10000X: tests-100000 tests-100001
+tests-10000X:
+	@time $(MAKE) tests-100000
+	@time $(MAKE) tests-100001
 clean:
 	@rm -f pi
 	@rm -f *.out
