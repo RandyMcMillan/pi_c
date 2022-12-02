@@ -42,6 +42,12 @@ tests: pi
 	@`pwd`/./pi 1001   > `pwd`/logs/1001.log
 	@`pwd`/./pi 10001  > `pwd`/logs/10001.log
 #	@git diff
+.PHONY:tests-100000
+tests-100000: pi
+	@`pwd`/./pi 100000  > `pwd`/logs/10000X.log
+.PHONY:tests-100001
+tests-100001: pi
+	@`pwd`/./pi 100001  > `pwd`/logs/10000X.log
 clean:
 	@rm -f pi
 	@rm -f *.out
