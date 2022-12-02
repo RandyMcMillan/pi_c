@@ -13,7 +13,7 @@
 #include "bubble_sort.c"
 #include "populate_chunk_index.c"
 //
-#define BASE 1000
+#define BASE 10000
 
 //pi.h
 void swap(unsigned long* xp, unsigned long* yp);
