@@ -16,8 +16,12 @@ jobs:
     - name: make
       run: make
     - name: make tests
-      run: make tests
+      run: |
+          make tests
+          git diff
     - name: make tests-10000X
-      run: make tests-10000X
+      run: |
+          make tests-10000X
+          git diff
     - name: pi
       run: ./pi
