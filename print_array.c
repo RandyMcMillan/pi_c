@@ -8,10 +8,10 @@ void print_array(unsigned long arr[], int size)
 	int i;
 	//printf("print_array:\n");
 	printf("%lu", arr[0]);
-	printf("%02lu.\n", arr[1]);
+	printf("%03lu.\n", arr[1]);
 	for (i = 2; i < size-1; i++)
 		if (arr[i] <= 2048){
-			printf("%03lu:%04d\n", arr[i], i);
+			printf("%04lu:%04d\n", arr[i], i);
 		}
 }
 void print_array2(unsigned long arr1[], unsigned long arr2[], int size)
