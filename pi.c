@@ -26,13 +26,47 @@ void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
 
 int main(int argc, char** argv) {
 
-  int n    = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
-  int base = argc > 2 ? (atoi(argv[2])) : BASE;
+  size_t counter = 0;
+  int n                   = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;
+  int base                = argc > 2 ? (atoi(argv[2])) : BASE;
   unsigned long *pi       = (unsigned long*) malloc(n * sizeof(unsigned long));
   unsigned long *list     = (unsigned long*) malloc(n * sizeof(unsigned long));
   unsigned long *gt_list  = (unsigned long*) malloc(n * sizeof(unsigned long));
+  chunk_index *chunk_list = (chunk_index*)   malloc(n * sizeof(chunk_index));
 
-  chunk_index *chunk_list = (chunk_index*)    malloc(n * sizeof(chunk_index));
+  for (counter = 1; counter < argc; counter++)
+    {
+
+        //printf("argv[%zu] = %s\n", counter, argv[counter]);
+        if (argv[counter][0] == '-')
+        {
+             if (argv[counter][1] == 'i')
+             {
+                 printf("i");
+             }
+             if (argv[counter][1] == 'l')
+             {
+                 printf("l");
+             }
+             if (argv[counter][1] == 'w')
+             {
+                 printf("w");
+             }
+             if (argv[counter][1] == '-')
+             {
+                 printf("-");
+             }
+             else
+             {
+                 printf("Invalid option.");
+                 return 2;
+             }
+        }
+        else
+        {
+           printf("");
+        }
+    }
 
   div_t d;
   int i, j, t1, t2, t3;
