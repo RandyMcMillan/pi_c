@@ -82,7 +82,6 @@ int main(int argc, char** argv) {
   //printf("Sorted array: \n");
 
   print_array(pi,          n);
-  // print_array(list,        n);
   // bubble_sort(pi, list,    n);
   print_array(list,        n);
   print_array(gt_list,     n);
