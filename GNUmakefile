@@ -8,7 +8,9 @@ pi:
 .PHONY:type
 type:
 	@gcc type.c -o type
-test: default tests
+.PHONY:test
+test: default
+	@`pwd`/./pi 1000 10000 > `pwd`/logs/1000.10000.log
 .PHONY:tests
 tests: pi
 	@mkdir -p logs
