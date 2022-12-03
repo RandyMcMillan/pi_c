@@ -20,6 +20,7 @@ void swap(unsigned long* xp, unsigned long* yp);
 void bubble_sort(unsigned long arr[], unsigned long arr2[], int n);
 void print_array(unsigned long arr[], int size);
 void print_array2(unsigned long arr1[], unsigned long arr2[], int size);
+void print_pi(unsigned long *pi, int n);
 void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
 //pi.h
 
@@ -31,7 +32,7 @@ int main(int argc, char** argv) {
   unsigned long *list     = (unsigned long*) malloc(n * sizeof(unsigned long));
   unsigned long *gt_list  = (unsigned long*) malloc(n * sizeof(unsigned long));
 
-  chunk_index *chunk_list  = (chunk_index*)    malloc(n * sizeof(chunk_index));
+  chunk_index *chunk_list = (chunk_index*)    malloc(n * sizeof(chunk_index));
 
   div_t d;
   int i, j, t1, t2, t3;

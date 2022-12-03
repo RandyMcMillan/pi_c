@@ -3,7 +3,7 @@
 #include <string.h>
 
 /* Print pi as an array of n digits in base BASE */
-void print_pi(unsigned long *pi, unsigned long *list, unsigned long *gt_list, int n) {
+void print_pi(unsigned long *pi, int n) {
 
 	int i;
 	printf("print\n");
