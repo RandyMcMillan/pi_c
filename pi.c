@@ -25,9 +25,53 @@ void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
 //pi.h
 
 int main(int argc, char** argv) {
+	
+	
+	/* Loop counter */
+    size_t counter = 0;
 
-  int n    = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
-  int base = argc > 2 ? (atoi(argv[2])) : BASE;
+    /*
+     * Read through command-line arguments for options.
+     */
+    for (counter = 1; counter < argc; counter++)
+    {
+        printf("argv[%zu] = %s\n", counter, argv[counter]);
+        if (argv[counter][0] == '-')
+        {
+             if (argv[counter][1] == 'i')
+             {
+                 printf("i");
+             }
+             if (argv[counter][1] == 'l')
+             {
+                 printf("l");
+             }
+             if (argv[counter][1] == 'w')
+             {
+                 printf("w");
+             }
+             if (argv[counter][1] == '-')
+             {
+                 printf("-");
+             }
+             else
+             {
+                 printf("Invalid option.");
+                 return 2;
+             }
+        }
+        else
+        {
+           printf("else...");
+        }
+    }
+
+
+  /* number of pi digits */
+  printf("%d\n",argc);
+  printf("%d\n",argc);
+  int n                   = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;
+  int base                = argc > 2 ? (atoi(argv[2])) : BASE;
   unsigned long *pi       = (unsigned long*) malloc(n * sizeof(unsigned long));
   unsigned long *list     = (unsigned long*) malloc(n * sizeof(unsigned long));
   unsigned long *gt_list  = (unsigned long*) malloc(n * sizeof(unsigned long));
