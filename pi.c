@@ -25,7 +25,8 @@ void populate_chunk_index(unsigned long arr[], chunk_index ci[], int size);
 
 int main(int argc, char** argv) {
 
-  int n = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
+  int n    = argc > 1 ? (atoi(argv[1])+3)/4+3 : 253;  /* number of pi digits */
+  int base = argc > 2 ? (atoi(argv[2])) : BASE;
   unsigned long *pi       = (unsigned long*) malloc(n * sizeof(unsigned long));
   unsigned long *list     = (unsigned long*) malloc(n * sizeof(unsigned long));
   unsigned long *gt_list  = (unsigned long*) malloc(n * sizeof(unsigned long));
@@ -54,18 +55,18 @@ int main(int argc, char** argv) {
       t1 += pi[j] * i;
       t2 += list[j] * i;
       t3 += gt_list[j] * i;
-      pi[j]      = t1 % BASE;
-      list[j]    = t2 % BASE;
-      gt_list[j] = t3 % BASE;
-      t1 /= BASE;
-      t2 /= BASE;
-      t3 /= BASE;
+      pi[j]      = t1 % base;
+      list[j]    = t2 % base;
+      gt_list[j] = t3 % base;
+      t1 /= base;
+      t2 /= base;
+      t3 /= base;
     }
 
     /* pi /= (2*i+1) */
     d.quot = d.rem = 0;
     for (j=0; j<n; ++j) {  /* pi /= 2*i+1; */
-      d = div(pi[j]+d.rem*BASE, i+i+1);
+      d = div(pi[j]+d.rem*base, i+i+1);
       pi[j]      = d.quot;
       list[j]    = d.quot;
       gt_list[j] = d.quot;
