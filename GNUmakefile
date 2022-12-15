@@ -1,3 +1,8 @@
+-:default
+	@ls
+
+
+
 default:
 	$(MAKE) clean
 	@gcc pi.c -o pi
@@ -5,6 +10,18 @@ default:
 .PHONY:pi
 pi:
 	@gcc pi.c -o pi
+depends: gmp mpfr
+.PHONY:gmp-chudnovsky.c
+gmp-chudnovsky.c:
+	@cc $@
+.PHONY:gmp
+gmp:
+	@pushd gmp && ./configure --prefix=/usr/local && popd
+	$(MAKE) install -C gmp
+.PHONY:mpfr
+mpfr:
+	@pushd mpfr && ./configure --prefix=/usr/local && popd
+	$(MAKE) install -C mpfr
 .PHONY:type
 type:
 	@gcc type.c -o type
@@ -56,6 +73,5 @@ tests-100001: pi
 tests-10000X:
 	@time $(MAKE) tests-100000
 	@time $(MAKE) tests-100001
-clean:
-	@rm -f pi
-	@rm -f *.out
+
+-include Makefile
