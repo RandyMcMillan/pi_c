@@ -35,17 +35,16 @@ GIT_REPO_NAME							:= $(PROJECT_NAME)
 export GIT_REPO_NAME
 GIT_REPO_PATH							:= $(HOME)/$(GIT_REPO_NAME)
 export GIT_REPO_PATH
-
--:## -----
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?##/ {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
-	$(MAKE) clean
-	@gcc pi.c -o pi
-	@gcc type.c -o type
+##command		description
+-:help
 help:## help
-	@sed -n 's/^#//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/#/'
-all: pi depends## all #all all
+	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^##/ /'
+	@echo
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+all: pi depends## all pi depends
 .PHONY:pi
-pi:## pi
+pi:type## pi type
+	$(MAKE) clean
 	@gcc pi.c -o pi
 depends: gmp mpfr## depends
 .PHONY:gmp-chudnovsky.c
@@ -54,11 +53,11 @@ gmp-chudnovsky.c:## gmp-chudnovsky
 .PHONY:gmp
 gmp:## gmp
 	@pushd gmp && ./configure --prefix=/usr/local && popd
-	$(MAKE) install -C gmp
+	$(MAKE) install-recursive -C gmp
 .PHONY:mpfr
 mpfr:## mpfr
 	@pushd mpfr && ./configure --prefix=/usr/local && popd
-	$(MAKE) install -C mpfr
+	$(MAKE) install-recursive -C mpfr
 .PHONY:type
 type:## type
 	@gcc type.c -o type
