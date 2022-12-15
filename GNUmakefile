@@ -2,6 +2,7 @@
 	$(MAKE) clean
 	@gcc pi.c -o pi
 	@gcc type.c -o type
+all: pi depends
 .PHONY:pi
 pi:
 	@gcc pi.c -o pi
