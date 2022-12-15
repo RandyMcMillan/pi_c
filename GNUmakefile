@@ -22,7 +22,7 @@ mpfr:
 type:
 	@gcc type.c -o type
 .PHONY:test
-test: default
+test: -
 	@`pwd`/./pi 1000 10000 > `pwd`/logs/1000.10000.log
 .PHONY:tests
 tests: pi
