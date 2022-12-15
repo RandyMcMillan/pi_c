@@ -1,4 +1,3 @@
-# PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 SHELL									:= /bin/bash
 
 PWD										?= pwd_unknown
@@ -9,14 +8,13 @@ export THIS_DIR
 TIME									:= $(shell date +%s)
 export TIME
 
-# PROJECT_NAME defaults to name of the current directory.
 ifeq ($(project),)
 PROJECT_NAME							:= $(notdir $(PWD))
 else
 PROJECT_NAME							:= $(project)
 endif
 export PROJECT_NAME
-#GIT CONFIG
+
 GIT_USER_NAME							:= $(shell git config user.name)
 export GIT_USER_NAME
 GIT_USER_EMAIL							:= $(shell git config user.email)
@@ -38,21 +36,14 @@ export GIT_REPO_NAME
 GIT_REPO_PATH							:= $(HOME)/$(GIT_REPO_NAME)
 export GIT_REPO_PATH
 
--:
+-:## -----
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?##/ {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 	$(MAKE) clean
 	@gcc pi.c -o pi
 	@gcc type.c -o type
 help:## help
-	@echo ''
-	#NOTE: 2 hashes are detected as 1st column output with color
-	@sed -n 's/^##ARGS//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
-	# @sed -n 's/^.PHONY//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
-	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
-	@sed -n 's/^# //p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/# /'
-	@sed -n 's/^## //p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/## /'
-	@sed -n 's/^### //p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/### /'
-all: pi depends## all
+	@sed -n 's/^#//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/#/'
+all: pi depends## all #all all
 .PHONY:pi
 pi:## pi
 	@gcc pi.c -o pi
@@ -108,15 +99,15 @@ tests: pi## tests pi
 	@`pwd`/./pi 10001  > `pwd`/logs/10001.log
 #	@git diff
 .PHONY:tests-100000
-tests-100000: pi## tests-100000
+tests-100000: pi ## tests-100000
 	@`pwd`/./pi 100000  > `pwd`/logs/100000.log
 	@`pwd`/./pi 100000  > `pwd`/logs/10000X.log
 .PHONY:tests-100001
-tests-100001: pi## tests-100001
+tests-100001: pi ## tests-100001
 	@`pwd`/./pi 100000  > `pwd`/logs/100001.log
 	@`pwd`/./pi 100001  > `pwd`/logs/10000X.log
 .PHONY:tests-10000X
-tests-10000X: pi# tests-10000X
+tests-10000X: pi ## tests-10000X
 	@time $(MAKE) tests-100000
 	@time $(MAKE) tests-100001
 
