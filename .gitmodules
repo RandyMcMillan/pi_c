@@ -1,0 +1,7 @@
+[submodule "gmp"]
+	path = gmp
+	url = git@github.com:timechain-academy/gmp.git
+[submodule "mfpr"]
+	path = mpfr
+	url = git@github.com:timechain-academy/mpfr.git
+	branch = master
