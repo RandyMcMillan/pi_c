@@ -66,10 +66,10 @@ mpfr:## mpfr
 type:## type
 	@gcc type.c -o type
 .PHONY:test
-test: -## test -
+test: pi## test
 	@`pwd`/./pi 1000 10000 > `pwd`/logs/1000.10000.log
 .PHONY:tests
-tests: pi## tests pi
+tests: test## tests pi
 	@mkdir -p logs
 	@`pwd`/./pi        > `pwd`/logs/pi.log
 	@`pwd`/./pi 1      > `pwd`/logs/1.log
