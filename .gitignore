@@ -6,3 +6,7 @@ type
 .github/workflows/.DS_Store
 config.h
 configurator.out.dSYM/
+
+include/
+lib/
+share/
