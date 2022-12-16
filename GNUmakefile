@@ -47,17 +47,20 @@ all: pi depends## all pi depends
 pi:type## pi type
 	$(MAKE) clean
 	@gcc pi.c -o pi
+configure:config-gpm config-mpfr## configure gpm mpfr
+config-gpm:## config-gpm
+	@pushd gmp && ./autogen.sh && ./configure --prefix=$(PWD) && popd
+config-mpfr:## config-mpfr
+	@pushd mpfr && ./autogen.sh && ./configure --prefix=$(PWD) && popd
 depends: gmp mpfr## depends
 .PHONY:gmp-chudnovsky.c
 gmp-chudnovsky.c:## gmp-chudnovsky
 	@cc $@
 .PHONY:gmp
 gmp:## gmp
-	@pushd gmp && ./autogen.sh && ./configure --prefix=$(PWD) && popd
 	$(MAKE) install-recursive -C gmp
 .PHONY:mpfr
 mpfr:## mpfr
-	@pushd mpfr && ./autogen.sh && ./configure --prefix=$(PWD) && popd
 	$(MAKE) install-recursive -C mpfr
 .PHONY:type
 type:## type
