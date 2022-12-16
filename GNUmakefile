@@ -52,11 +52,11 @@ gmp-chudnovsky.c:## gmp-chudnovsky
 	@cc $@
 .PHONY:gmp
 gmp:## gmp
-	@pushd gmp && ./configure --prefix=/usr/local && popd
+	@pushd gmp && ./configure --prefix=$(PWD) && popd
 	$(MAKE) install-recursive -C gmp
 .PHONY:mpfr
 mpfr:## mpfr
-	@pushd mpfr && ./configure --prefix=/usr/local && popd
+	@pushd mpfr && ./configure --prefix=$(PWD) && popd
 	$(MAKE) install-recursive -C mpfr
 .PHONY:type
 type:## type
