@@ -37,6 +37,7 @@ GIT_REPO_PATH							:= $(HOME)/$(GIT_REPO_NAME)
 export GIT_REPO_PATH
 ##command		description
 -:help
+	@git submodule update --init --recursive
 help:## help
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^##/ /'
 	@echo
